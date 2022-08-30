@@ -4,7 +4,7 @@
     echo('<ul>');
         for($i = 0; $i < 10; $i ++){
            $cadena = '<li>'.$i.'</li>';
-   //      $cadena = "<li>$i</li>"; tambien se puede escribir asi para concatenar
+   //         $cadena = "<li>$i</li>"; tambien se puede escribir asi para concatenar
            echo($cadena);
         }
   
