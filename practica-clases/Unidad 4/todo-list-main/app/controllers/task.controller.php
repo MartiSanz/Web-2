@@ -17,7 +17,7 @@ class TaskController{
         include './templates/header.php';
     
         //obtiene las tareas del modelo
-        $tasks = $this->model->getAllTasks();
+        $tasks = $this->model->getAll();
 
         //actualiza la vista
         $this->view->showTask($tasks);
@@ -31,14 +31,14 @@ class TaskController{
         $description = $_POST['description'];
         $priority = $_POST['priority'];
     
-        $id = $this->model->insertTask($title, $description, $priority);
+        $id = $this->model->insert($title, $description, $priority);
     
         header("Location: " . BASE_URL); 
     }
 
     // elimina la tarea del sistema
     function deleteTask($id) {
-        $this->model->deleteTaskById($id);
+        $this->model->deleteById($id);
         header("Location: " . BASE_URL); 
     }
 }
