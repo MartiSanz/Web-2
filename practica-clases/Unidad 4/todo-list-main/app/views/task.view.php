@@ -2,7 +2,7 @@
 
 class TaskView{
     
-    function showTask($task){
+    function showTask($tasks){
         include './templates/form_alta.php';
         
         echo '<ul class="list-group">';

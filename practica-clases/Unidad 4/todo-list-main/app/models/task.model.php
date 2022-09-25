@@ -1,6 +1,7 @@
-<?
+<?php
 class TaskModel{
-
+    private $db;
+    
     private function getDB() {
         $db = new PDO('mysql:host=localhost;'.'dbname=db_tasks;charset=utf8', 'root', '');
         return $db;

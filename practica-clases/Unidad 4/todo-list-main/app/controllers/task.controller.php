@@ -1,14 +1,13 @@
 <?php
 
-include_once 'app/models/task.model.php';
-include_once 'app/views/task.view.php';
+include_once './app/models/task.model.php';
+include_once './app/views/task.view.php';
 
 class TaskController{
-
     private $model;
     private $view;
 
-    function __construct(){
+    public function __construct(){
         $this->view = new TaskView();
         $this->model = new TaskModel();
     }
@@ -21,7 +20,7 @@ class TaskController{
         $tasks = $this->model->getAllTasks();
 
         //actualiza la vista
-        $this->view->showTask($task);
+        $this->view->showTask($tasks);
     }
 
     // inserta las tareas en el sistema
