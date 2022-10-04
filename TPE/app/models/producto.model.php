@@ -29,7 +29,9 @@ class ProductoModel{
 
     function getProductoById($id) {
 
-        $query = $this->db->prepare('SELECT * FROM producto WHERE id = ?');
+        //CONSULTAR
+        // Esta bien llamar dos tablas desde el model de producto? Aca se debe mostrar la categoria?
+        $query = $this->db->prepare('SELECT p.id, p.nombre as productoNombre, p.marca, p.precio, c.nombre as categoriaNombre FROM producto p JOIN categoria c on c.id = p.id_categoria_fk WHERE p.id = ?');
         $query->execute([$id]);
 
         // obtengo los resultados

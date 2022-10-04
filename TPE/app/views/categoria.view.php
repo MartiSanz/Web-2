@@ -1,23 +1,17 @@
 <?php
 
 class CategoriaView{
+    private $smarty;
     
+    function __construct(){
+        $this->smarty = new Smarty();
+    }
+
     function verCategorias($categorias){
-        include './templates/header.php';
-        echo "<div class='card'>
-                <div class='card-header'>
-                    <span> <b>LISTADO DE CATEGORIAS </span> </b>
-                </div>
-            </div>";
-            echo '<ul class="list-group">';
-            foreach ($categorias as $categoria) {
-            echo "<li class='list-group-item d-flex justify-content-between align-items-center'>
-                        <a class='link-dark' href='verProductosPorCategoria/$categoria->id'> <b>$categoria->nombre</b></a>
-                    </li>";
-            }
-            echo "</ul>";
-        include './templates/footer.php';
-    
+        $this->smarty->assign('titulo', 'LISTADO DE CATEGORIAS');
+        $this->smarty->assign('listado', $categorias);
+        $this->smarty->assign('href', 'verProductosPorCategoria/');
+        $this->smarty->display('templates/verListado.tpl');   
     }
     
 }
