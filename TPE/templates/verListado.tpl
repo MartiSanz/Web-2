@@ -4,14 +4,24 @@
     <div class='card-header'>
         <span> <b>{$titulo}</span> </b>
     </div>
+
+
+    <div class='card-body'>
+        <table class='table'>
+            <tbody>
+            {foreach from=$listado item=$item}
+                <tr>
+                    <td><a class="btn bi bi-pencil-square" href='{$hrefVerProductosPorCategoria}{$item->id}'> <b>{$item->nombre}</b></a></td>
+                    <th><a class="btn btn-outline-secondary" href="">Editar</a></th>
+                    <th><a class="btn btn-outline-secondary" href='{$hrefBotonEliminar}{$item->id}'>{$botonEliminar}</a></th>
+                </tr>
+            {/foreach}  
+            </tbody>
+        </table>
+
+        <div class='card-footer'>
+            <span> <a class='btn btn-outline-secondary' href='{$hrefBotonAgregar}'> {$botonAgregar} </a> </span>
+        </div>
+    </div>
 </div>
-
-<ul class="list-group">
-    {foreach from=$listado item=$item}
-        <li class='list-group-item d-flex justify-content-between align-items-center'>
-            <a class='link-dark' href='{$href}{$item->id}'> <b>{$item->nombre}</b></a>
-        </li>
-    {/foreach}   
-</ul>
-
 {include 'templates/footer.tpl'}

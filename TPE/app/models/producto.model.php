@@ -9,7 +9,7 @@ class ProductoModel{
     }
 
     private function getDB() {
-        $db = new PDO('mysql:host=localhost;'.'dbname=sistema;charset=utf8', 'root', '');
+        $db = new PDO('mysql:host=localhost;'.'dbname=db_tienda;charset=utf8', 'root', '');
         return $db;
     }
         

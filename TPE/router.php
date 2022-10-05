@@ -21,15 +21,25 @@ switch ($params[0]) {
         $controllerProducto->verProductos();
         break;
     case 'verProducto':
-        $id = $params[1];
-        $controllerProducto->verProducto($id);
+        $id_producto = $params[1];
+        $controllerProducto->verProducto($id_producto);
         break;
     case 'verCategorias':
         $controllerCategoria->verCategorias();
         break;
     case 'verProductosPorCategoria':
-        $id = $params[1];
-        $controllerProducto->verProductosPorCategoria($id);
+        $id_categoria = $params[1];
+        $controllerProducto->verProductosPorCategoria($id_categoria);
+        break;
+    case 'verFormCategoria':
+        $controllerCategoria->verFormCategoria();
+        break;
+    case 'agregarCategoria':
+        $controllerCategoria->agregarCategoria();
+        break;
+    case 'eliminarCategoria':
+        $id_categoria = $params[1];
+        $controllerCategoria->eliminarCategoria($id_categoria);
         break;
     default:
         header("HTTP/1.0 404 Not Found");

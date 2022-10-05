@@ -25,8 +25,8 @@
         </table>
     </div>
 
-    <div class='card-header'>
-        <span> <a class='link-dark' href='./home'> Volver </a> </span>
+    <div class='card-footer'>
+        <span> <a class='btn btn-outline-secondary' href='./home'> Volver </a> </span>
     </div>
 </div>
 

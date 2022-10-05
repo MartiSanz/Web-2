@@ -9,12 +9,12 @@ class CategoriaModel{
     }
 
     private function getDB() {
-        $db = new PDO('mysql:host=localhost;'.'dbname=sistema;charset=utf8', 'root', '');
+        $db = new PDO('mysql:host=localhost;'.'dbname=db_tienda;charset=utf8', 'root', '');
         return $db;
     }
         
     /**
-     * Devuelve la lista de Categorias completa.
+     * Devuelve la lista de categorias completa.
      */
     function getAll() {
 
@@ -27,16 +27,24 @@ class CategoriaModel{
         return $categorias;
     }
 
-    function getCategoriaById($id) {
+    /**
+     * Inserta una categoria en la base de datos.
+    */
+    function insert($nombreCategoria) {
+        $db = $this->getDB();
+        $query = $db->prepare("INSERT INTO categoria (nombre) VALUES (?)");
+        $query->execute([$nombreCategoria]);
 
-         $query = $this->db->prepare('SELECT * FROM categoria WHERE id = ?');
-         $query->execute([$id]);
-
-        // obtengo los resultados
-        $categoria = $query->fetchAll(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
-
-        return $categoria[0];
+        return $db->lastInsertId();
     }
 
-    //faltan agregar, eliminar y editar
+    // elimina una categoria
+    function eliminarCategoriaById($id){
+        // validar entrada de datos
+        $db = $this->getDB();
+        $query = $db->prepare("DELETE FROM categoria WHERE id = ?");
+        $query->execute([$id]);
+    }
+
+    // editar
 }

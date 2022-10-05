@@ -30,5 +30,3 @@
 
     <!-- inicio main container -->
     <main class="container">
-
-    <!-- en el header podria listar las categorias-->
