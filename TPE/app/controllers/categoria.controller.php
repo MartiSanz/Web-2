@@ -22,9 +22,19 @@ class CategoriaController{
         $this->view->verCategorias($categorias);
     }
 
-    function verFormCategoria() {   
+    function verFormAgregarCategoria() {   
         //actualiza la vista
-        $this->view->verFormCategoria();
+        $this->view->verFormAgregarCategoria();
+    }
+
+    function verFormEditarCategoria($id_categoria) {   
+        //actualiza la vista
+        $nombreCategoria = $this->model->getNombreCategoriaById($id_categoria);
+
+        //FALTA TERMINAR, VER SI MANDA UN ARREGLO O SI MANDA EL NOMBRE DE LA CATEGORIA
+
+        //verFromEditarCategoria d ela vista esta sin acomodar . tambien falta agregar el nombre actual de la categoria al formulario para que se vea como referencia de lo que se esta editando
+        $this->view->verFormEditarCategoria($id_categoria, $nombreCategoria[0]);
     }
 
     // inserta una categoria
@@ -32,10 +42,9 @@ class CategoriaController{
         // validar entrada de datos
         $nombreCategoria = $_POST['nombre'];
     
-        $id = $this->model->insert($nombreCategoria);
+        $id = $this->model->insertar($nombreCategoria);
 
-        //CONSULTAR puedo llamar a un mismo metodo del controlador?
-        $this->verCategorias();
+        header('Location: ' .BASE_URL. 'verCategorias');
     }
 
     // elimina una categoria
@@ -43,20 +52,18 @@ class CategoriaController{
         // validar entrada de datos
         $this->model->eliminarCategoriaById($id);
 
-        $this->verCategorias();
+        header('Location: ' .BASE_URL. 'verCategorias');
     }
 
     // edita una categoria
-    function editarCategoria(){
+    function editarCategoria($id){
         // validar entrada de datos
     
         $nombreCategoria = $_POST['nombre'];
     
-        $id = $this->model->insert($nombreCategoria);
+        $id = $this->model->editarCategoriaById($id, $nombreCategoria);
 
-        $this->view->verFormCategoria();
-    
-        header("Location: " . BASE_URL); 
+        header('Location: ' .BASE_URL. 'verCategorias');
     }
     
 

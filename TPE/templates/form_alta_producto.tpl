@@ -1,28 +1,28 @@
-<!-- formulario de edicion de producto 
-<form action="CAMBIAR" method="POST" class="my-4"> -->
+{include 'templates/header.tpl'}
 
 <!-- formulario de alta de producto -->
-<form action="CAMBIAR" method="POST" class="my-4">
-    <div class="mb-3">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" name="name" value="{$subject->name}">
-    </div>
-    <div class="mb-3">
-        <label for="year">Year</label>
-        <input type="number" class="form-control" name="year" value="{$subject->year}">
-    </div>
-    <div class="mb-3">
-        <label for="semester">Semester</label>
-        <input type="number" class="form-control" name="semester" id="" value="{$subject->semester}">
+<form action="agregarProducto" method="POST" class="my-4">
+    <div class="row">
+        <div class="col-9">
+            <div class="card">
+                <div class='card-header'>
+                    <span> <b>Agregar Producto</b></span>
+                </div>
+                <input placeholder="Nombre producto" name="nombre" type="text" class="form-control">
+                <input placeholder="Nombre marca" name="marca" type="text" class="form-control">
+                <input placeholder="Precio producto" name="precio" type="number" class="form-control">
+                <select class="form-select">
+                {foreach from=$listadoCategorias item=$item} <!-- required}-->
+                    <option value="{$item}">{$item}</option>
+                {/foreach} 
+                </select>
+                </div>
         </div>
-    <div class="mb-3">
-        <label for="career">Career</label>
-        <select class="form-control" name="career" id="">
-            {foreach from=$careersData item=$career}
-                <option value="{$career->id}">{$career->name}</option>
-            {/foreach}}
-        </select>
     </div>
 
-    <button class="btn" type="submit">Submit</button>
+    <button type="submit" class='btn btn-secondary'>Guardar</button>
+
 </form>
+
+
+{include 'templates/footer.tpl'}

@@ -31,8 +31,12 @@ switch ($params[0]) {
         $id_categoria = $params[1];
         $controllerProducto->verProductosPorCategoria($id_categoria);
         break;
-    case 'verFormCategoria':
-        $controllerCategoria->verFormCategoria();
+    case 'verFormAgregarCategoria':
+        $controllerCategoria->verFormAgregarCategoria();
+        break;
+    case 'verFormEditarCategoria':
+        $id_categoria = $params[1];
+        $controllerCategoria->verFormEditarCategoria($id_categoria);
         break;
     case 'agregarCategoria':
         $controllerCategoria->agregarCategoria();
@@ -41,8 +45,11 @@ switch ($params[0]) {
         $id_categoria = $params[1];
         $controllerCategoria->eliminarCategoria($id_categoria);
         break;
+    case 'editarCategoria':
+        $id_categoria = $params[1];
+        $controllerCategoria->editarCategoria($id_categoria);
+        break;
     default:
         header("HTTP/1.0 404 Not Found");
-        echo('404 Page not found'); // esto pertenece a la vista 
         break;
 }

@@ -28,23 +28,47 @@ class CategoriaModel{
     }
 
     /**
-     * Inserta una categoria en la base de datos.
-    */
-    function insert($nombreCategoria) {
-        $db = $this->getDB();
-        $query = $db->prepare("INSERT INTO categoria (nombre) VALUES (?)");
-        $query->execute([$nombreCategoria]);
+     * Devuelve el nombre de una categoria dado un id
+     */
+    function getNombreCategoriaById($id_categoria){
+        $query = $this->db->prepare('SELECT nombre FROM categoria WHERE id = ?');
+        $query->execute([$id_categoria]);
 
-        return $db->lastInsertId();
+        // obtengo los resultados
+        $categoria = $query->fetchAll(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
+        
+        return $categoria;
     }
 
-    // elimina una categoria
+    /**
+     * Inserta una categoria en la base de datos.
+    */
+    function insertar($nombreCategoria) {
+        //$db = $this->getDB();
+        $query = $this->db->prepare("INSERT INTO categoria (nombre) VALUES (?)");
+        $query->execute([$nombreCategoria]);
+
+        return $this->db->lastInsertId(); 
+    }
+
+    /**
+     * elimina una categoria en la base de datos.
+    */
     function eliminarCategoriaById($id){
         // validar entrada de datos
-        $db = $this->getDB();
-        $query = $db->prepare("DELETE FROM categoria WHERE id = ?");
+        $query = $this->db->prepare("DELETE FROM categoria WHERE id = ?");
         $query->execute([$id]);
     }
 
-    // editar
+    /**
+     * edita una categoria en la base de datos.
+    */
+    function editarCategoriaById($id, $nombreCategoria){
+        // validar entrada de datos
+        $query = $this->db->prepare("UPDATE categoria SET nombre = ? WHERE id = ?");
+        $query->execute([$nombreCategoria, $id]);
+
+    //    var_dump($id, $nombreCategoria);
+    }
+
 }

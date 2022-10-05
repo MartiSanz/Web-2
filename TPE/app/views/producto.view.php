@@ -36,5 +36,10 @@ class ProductoView{
         $this->smarty->display('templates/verProducto.tpl');   
     }
 
+    //FALTA
+    function verFormAgregarProducto(){
+        $this->smarty->display('templates/form_alta_producto.tpl');   
+    }
+
    
 }
