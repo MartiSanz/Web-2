@@ -17,7 +17,7 @@ class CategoriaView{
         //listado de categorias
         $this->smarty->assign('listado', $categorias);
         //href
-        $this->smarty->assign('hrefVerProductosPorCategoria', 'verProductosPorCategoria/');
+        $this->smarty->assign('href', 'verProductosPorCategoria/');
         $this->smarty->assign('hrefBotonAgregar', 'verFormAgregarCategoria');
         $this->smarty->assign('hrefBotonEditar', 'verFormEditarCategoria/');
         $this->smarty->assign('hrefBotonEliminar', 'eliminarCategoria/');

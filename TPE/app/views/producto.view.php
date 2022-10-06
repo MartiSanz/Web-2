@@ -13,13 +13,20 @@ class ProductoView{
         //titulos
         $this->smarty->assign('titulo', 'LISTADO DE PRODUCTOS');
         $this->smarty->assign('botonAgregar', 'Agregar producto');
+        $this->smarty->assign('botonEditar', 'Editar producto');
+        $this->smarty->assign('botonEliminar', 'Eliminar producto');
+        
         //listado
         $this->smarty->assign('listado', $productos);
         //href
         $this->smarty->assign('href', 'verProducto/');
+        $this->smarty->assign('hrefBotonAgregar', 'verFormAgregarProducto');
+        $this->smarty->assign('hrefBotonEditar', 'verFormEditarProducto/');
+        $this->smarty->assign('hrefBotonEliminar', 'eliminarProducto/');
         
         $this->smarty->display('templates/verListado.tpl');   
     }
+
 
     function verProducto($producto){
         //titulos
@@ -37,7 +44,9 @@ class ProductoView{
     }
 
     //FALTA
-    function verFormAgregarProducto(){
+    function verFormAgregarProducto($listadoCategorias){
+        $this->smarty->assign('listadoCategorias', $listadoCategorias);
+        print_r($listadoCategorias);
         $this->smarty->display('templates/form_alta_producto.tpl');   
     }
 

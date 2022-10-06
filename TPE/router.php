@@ -38,6 +38,17 @@ switch ($params[0]) {
         $id_categoria = $params[1];
         $controllerCategoria->verFormEditarCategoria($id_categoria);
         break;
+    case 'verFormAgregarProducto':
+        $categorias = $controllerCategoria->getCategorias();
+        $controllerProducto->verFormAgregarProducto($categorias);
+        break;
+    case 'agregarProducto':
+        $controllerProducto->agregarProducto();
+        break;
+    case 'eliminarProducto':
+        $id_producto = $params[1];
+        $controllerProducto->eliminarProducto($id_producto);
+        break;
     case 'agregarCategoria':
         $controllerCategoria->agregarCategoria();
         break;

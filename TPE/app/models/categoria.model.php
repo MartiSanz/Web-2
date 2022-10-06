@@ -44,7 +44,6 @@ class CategoriaModel{
      * Inserta una categoria en la base de datos.
     */
     function insertar($nombreCategoria) {
-        //$db = $this->getDB();
         $query = $this->db->prepare("INSERT INTO categoria (nombre) VALUES (?)");
         $query->execute([$nombreCategoria]);
 

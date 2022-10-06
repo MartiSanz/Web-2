@@ -8,12 +8,12 @@
                 <div class='card-header'>
                     <span> <b>Agregar Producto</b></span>
                 </div>
-                <input placeholder="Nombre producto" name="nombre" type="text" class="form-control">
-                <input placeholder="Nombre marca" name="marca" type="text" class="form-control">
-                <input placeholder="Precio producto" name="precio" type="number" class="form-control">
+                <input placeholder="Nombre producto" name="nombre" type="text" class="form-control" required>
+                <input placeholder="Nombre marca" name="marca" type="text" class="form-control" required>
+                <input placeholder="Precio producto" name="precio" type="number" class="form-control" required>
                 <select class="form-select">
                 {foreach from=$listadoCategorias item=$item} <!-- required}-->
-                    <option value="{$item}">{$item}</option>
+                    <option name="idCategoria" value="{$item->id}">{$item->nombre}</option>
                 {/foreach} 
                 </select>
                 </div>

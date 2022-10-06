@@ -51,5 +51,24 @@ class ProductoModel{
         return $productos;
     }
 
-    //faltan agregar, eliminar y editar
+    /**
+     * Inserta una categoria en la base de datos.
+    */
+    function insertar($nombreProducto, $nombreMarca, $precio, $idCategoria){
+        $query = $this->db->prepare("INSERT INTO producto (nombre,marca,precio,id_categoria_fk) VALUES (?,?,?,?)");
+        $query->execute([$nombreProducto,$nombreMarca,$precio,$idCategoria]);
+
+        return $this->db->lastInsertId(); 
+    }
+
+    /**
+     * elimina un prodcuto en la base de datos.
+    */
+    function eliminarProductoById($id){
+        // validar entrada de datos
+        $query = $this->db->prepare("DELETE FROM producto WHERE id = ?");
+        $query->execute([$id]);
+    }
+
+    //falta editar
 }

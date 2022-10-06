@@ -36,4 +36,30 @@ class ProductoController{
         //actualiza la vista
         $this->view->verProductos($productos);
     }
+
+    // inserta un producto
+    function agregarProducto(){
+        // validar entrada de datos
+        $nombreProducto = $_POST['nombre'];
+        $nombreMarca = $_POST['marca'];
+        $precio = $_POST['precio'];
+        $idCategoria = $_POST['idCategoria'];
+    
+        $id = $this->model->insertar($nombreProducto, $nombreMarca, $precio, $idCategoria);
+
+        header('Location: ' .BASE_URL. 'home');
+    }
+
+    function verFormAgregarProducto($listadoCategorias) {   
+        //actualiza la vista
+        $this->view->verFormAgregarProducto($listadoCategorias);
+    }
+
+     // elimina un producto
+     function eliminarProducto($id){
+        // validar entrada de datos
+        $this->model->eliminarProductoById($id);
+
+        header('Location: ' .BASE_URL. 'home');
+    }
 }

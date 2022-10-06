@@ -22,6 +22,16 @@ class CategoriaController{
         $this->view->verCategorias($categorias);
     }
 
+    //retorna la lista de categorias
+    function getCategorias() {    
+        
+        //obtiene los categorias del modelo
+        $categorias = $this->model->getAll();
+
+        //actualiza la vista
+        return $categorias;
+    }
+
     function verFormAgregarCategoria() {   
         //actualiza la vista
         $this->view->verFormAgregarCategoria();
@@ -31,9 +41,6 @@ class CategoriaController{
         //actualiza la vista
         $nombreCategoria = $this->model->getNombreCategoriaById($id_categoria);
 
-        //FALTA TERMINAR, VER SI MANDA UN ARREGLO O SI MANDA EL NOMBRE DE LA CATEGORIA
-
-        //verFromEditarCategoria d ela vista esta sin acomodar . tambien falta agregar el nombre actual de la categoria al formulario para que se vea como referencia de lo que se esta editando
         $this->view->verFormEditarCategoria($id_categoria, $nombreCategoria[0]);
     }
 
@@ -58,13 +65,13 @@ class CategoriaController{
     // edita una categoria
     function editarCategoria($id){
         // validar entrada de datos
-    
         $nombreCategoria = $_POST['nombre'];
     
         $id = $this->model->editarCategoriaById($id, $nombreCategoria);
 
         header('Location: ' .BASE_URL. 'verCategorias');
     }
+
     
 
 }
