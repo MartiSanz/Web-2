@@ -52,12 +52,23 @@ class ProductoModel{
     /**
      * Inserta una categoria en la base de datos.
     */
-    function insertar($nombreProducto, $nombreMarca, $precio, $idCategoria){
-        $query = $this->db->prepare("INSERT INTO producto (nombre,marca,precio,id_categoria_fk) VALUES (?,?,?,?)");
-        $query->execute([$nombreProducto,$nombreMarca,$precio,$idCategoria]);
+    function insertar($nombreProducto, $nombreMarca, $precio, $idCategoria, $imagen = null){
+        $pathImg = null;
+        if ($imagen)
+            $pathImg = $this->uploadImage($imagen);
+
+        $query = $this->db->prepare("INSERT INTO producto (nombre,marca,precio,id_categoria_fk,imagen) VALUES (?,?,?,?,?)");
+        $query->execute([$nombreProducto,$nombreMarca,$precio,$idCategoria,$pathImg]);
 
         return $this->db->lastInsertId(); 
     }
+
+    private function uploadImage($image){
+        $target = 'img/producto/' . uniqid() . '.jpg'; // uniqid() le da un nombre unico a la imagen
+        move_uploaded_file($image, $target);
+        return $target;
+    }
+
 
     /**
      * elimina un producto en la base de datos.

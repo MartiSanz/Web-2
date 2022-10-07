@@ -20,6 +20,10 @@
                     <td>{$producto->marca}</td>
                     <td>${$producto->precio}</td>
                     <td>{$producto->categoriaNombre}</td>
+                    {if isset($producto->imagen)}
+                        <td><img src="{$producto->imagen}"/></td>
+                    {/if}
+                
                 </tr>
             </tbody>
         </table>

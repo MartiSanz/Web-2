@@ -37,11 +37,10 @@
             </table>
             
             <div class='card-footer'>
-                <button type="submit" class='btn btn-secondary'>Guardar</button>
+                <button type="submit" class='btn btn-secondary'>Editar Producto</button>
+                <span> <a class='btn btn btn-danger' href="./home"> Cancelar </a> </span>
             </div>
         </form>
-        
-        
     </div>
 </div>
 

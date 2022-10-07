@@ -1,20 +1,21 @@
 {include 'templates/header.tpl'}
 
-<form action="editarCategoria/{$idCategoria}" method="POST" class="my-4">
-    <div class="row">
-        <div class="col-9">
-            <div class="card">
-                <div class='card-header'>
-                    <span> <b>Editar Categoria -> {$nombreViejoCategoria}</b></span>
-                </div>
-                <input placeholder="Nombre categoria" name="nombre" type="text" class="form-control">
-            </div>
-        </div>
+<div class='card'>
+    <div class='card-header'>
+        <span> <b>Editar Categoria -> {$nombreViejoCategoria}</b></span>
     </div>
 
-    <button type="submit" class='btn btn-secondary'>Editar</button>
+    <div class='card-body'>
+        <form action="editarCategoria/{$idCategoria}" method="POST" class="my-4">
 
-</form>
-
+            <input placeholder="Nombre categoria" name="nombre" type="text" class="form-control" required>
+            
+            <div class='card-footer'>
+                <button type="submit" class='btn btn-secondary'>Editar Categoria</button>
+                <span> <a class='btn btn btn-danger' href="./verCategorias"> Cancelar </a> </span>
+            </div>
+        </form>
+    </div>
+</div>
 
 {include 'templates/footer.tpl'}

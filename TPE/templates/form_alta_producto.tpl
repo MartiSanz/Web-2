@@ -1,7 +1,7 @@
 {include 'templates/header.tpl'}
 
 <!-- formulario de alta de producto -->
-<form action="agregarProducto" method="POST" class="my-4">
+<form action="agregarProducto" method="POST" class="my-4" enctype="multipart/form-data">
     <div class="row">
         <div class="col-9">
             <div class="card">
@@ -16,11 +16,15 @@
                         <option value="{$item->id}">{$item->nombre}</option>
                     {/foreach} 
                 </select>
+                <input class="form-control" type="file" name="input_name" id="imageToUpload">
                 </div>
         </div>
     </div>
 
-    <button type="submit" class='btn btn-secondary'>Guardar</button>
+
+        <button type="submit" class='btn btn-secondary'>Guardar</button>
+        <span> <a class='btn btn btn-danger' href="./home"> Cancelar </a> </span>
+
 
 </form>
 

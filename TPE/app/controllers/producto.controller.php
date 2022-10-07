@@ -44,8 +44,13 @@ class ProductoController{
         $nombreMarca = $_POST['marca'];
         $precio = $_POST['precio'];
         $idCategoria = $_POST['idCategoria'];
-    
-        $id = $this->model->insertar($nombreProducto, $nombreMarca, $precio, $idCategoria);
+
+        if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png" ) {
+            $id = $this->model->insertar($nombreProducto, $nombreMarca, $precio, $idCategoria,  $_FILES['input_name']['tmp_name']);
+        }
+        else {
+            $id = $this->model->insertar($nombreProducto, $nombreMarca, $precio, $idCategoria);
+        }
 
         header('Location: ' .BASE_URL. 'home');
     }

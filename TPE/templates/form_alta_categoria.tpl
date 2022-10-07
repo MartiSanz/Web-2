@@ -13,6 +13,7 @@
     </div>
 
     <button type="submit" class='btn btn-secondary'>Guardar</button>
+    <span> <a class='btn btn btn-danger' href="./verCategorias"> Cancelar </a> </span>
 
 </form>
 
