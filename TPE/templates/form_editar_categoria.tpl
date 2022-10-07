@@ -2,7 +2,7 @@
 
 <div class='card'>
     <div class='card-header'>
-        <span> <b>Editar Categoria -> {$nombreViejoCategoria}</b></span>
+        <span class="fs-4 text"> <b>Editar Categoria -> {$nombreViejoCategoria}</b></span>
     </div>
 
     <div class='card-body'>

@@ -59,11 +59,15 @@ class ProductoView{
     }
 
     function verFormEditarProducto($listadoCategorias, $producto){
-        $this->smarty->assign('idProducto', $producto->id);
-        $this->smarty->assign('nombreViejoProducto', $producto->productoNombre);
-        $this->smarty->assign('nombreViejoMarca', $producto->marca);
-        $this->smarty->assign('precioViejo', $producto->precio);
-        $this->smarty->assign('nombreViejoCategoria', $producto->categoriaNombre);
+        //titulos
+        $this->smarty->assign('tituloCol1', 'Nombre');
+        $this->smarty->assign('tituloCol2', 'Marca');
+        $this->smarty->assign('tituloCol3', 'Precio');
+        $this->smarty->assign('tituloCol4', 'Categoria');
+        $this->smarty->assign('tituloCol5', 'Imagen');
+
+        $this->smarty->assign('producto', $producto);
+        
         $this->smarty->assign('listadoCategorias', $listadoCategorias);
         $this->smarty->display('templates/form_editar_producto.tpl');   
     }

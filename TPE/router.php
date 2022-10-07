@@ -53,7 +53,6 @@ switch ($params[0]) {
         $controllerProducto->agregarProducto();
         break;
     case 'editarProducto':
-        print_r ($params[1]);
         $id_producto = $params[1];
         $controllerProducto->editarProducto($id_producto);
         break;

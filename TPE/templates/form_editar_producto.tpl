@@ -4,36 +4,68 @@
 
 <div class='card'>
     <div class='card-header'>
-        <span> <b>Editar Producto</span> </b>
+        <span class="fs-4 text"> <b>Editar Producto: {$producto->productoNombre}</b></span>
     </div>
+    <div class='card-body'>
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th scope='col'>{$tituloCol1}</th>
+                    <th scope='col'>{$tituloCol2}</th>
+                    <th scope='col'>{$tituloCol3}</th>
+                    <th scope='col'>{$tituloCol4}</th>
+                    {if isset($producto->imagen)}
+                        <th scope='col'>{$tituloCol5}</th>
+                    {/if}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{$producto->productoNombre}</td>
+                    <td>{$producto->marca}</td>
+                    <td>${$producto->precio}</td>
+                    <td>{$producto->categoriaNombre}</td>
+                    {if isset($producto->imagen)}
+                        <td><img src="{$producto->imagen}"/></td>
+                    {/if}
+                
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
+<div class='card'>
+    <div class='card-header'></div>
 
     <div class='card-body'>
-        <form action="editarProducto/{$idProducto}" method="POST" class="my-4">
+        <form action="editarProducto/{$producto->id}" method="POST" class="my-4" enctype="multipart/form-data">
             <table class='table'>
+                <thead>
+                    <tr>
+                        <th scope='col'>{$tituloCol1} nuevo</th>
+                        <th scope='col'>{$tituloCol2} nueva</th>
+                        <th scope='col'>{$tituloCol3} nuevo</th>
+                        <th scope='col'>{$tituloCol4} nueva</th>
+                        {if isset($producto->imagen)}
+                            <th scope='col'>{$tituloCol5} nueva</th>
+                        {/if}
+                    </tr>
+                </thead>
                 <tbody>
                     <tr>
-                        <th><span>Nombre producto actual: {$nombreViejoProducto}</span></th>
                         <td><input placeholder="Nombre nuevo" name="nombre" type="text" class="form-control" required></td>
-                    </tr>
-                    <tr>
-                        <th><span>Marca producto actual: {$nombreViejoMarca}</span></th>
                         <td><input placeholder="Nombre marca nuevo" name="marca" type="text" class="form-control" required></td>
-                    </tr>
-                    <tr>
-                        <th><span>Precio producto actual: ${$precioViejo}</span></th>
                         <td><input placeholder="Precio nuevo" name="precio" type="number" class="form-control" required></td>
-                    </tr>
-                    <tr>
-                        <th><span>Categoria producto actual: {$nombreViejoCategoria}</span></th>
                         <td><select name="idCategoria" class="form-select">
                             {foreach from=$listadoCategorias item=$item}
                                 <option value="{$item->id}">{$item->nombre}</option>
                             {/foreach} 
                         </select></td>
+                        <td><input class="form-control" type="file" name="input_name" id="imageToUpload"></td>
                     </tr>
-                    
                 </tbody>
+              
             </table>
             
             <div class='card-footer'>
