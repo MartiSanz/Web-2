@@ -27,20 +27,32 @@ class TaskModel{
     /**
      * Inserta una tarea en la base de datos.
      */
-    function insertTask($title, $description, $priority) {
+    function insertTask($title, $description, $priority, $imagen) {
+        $pathImg = null;
+        if ($imagen)
+            $pathImg = $this->uploadImage($imagen);
+
         $db = $this->getDB();
-        $query = $db->prepare("INSERT INTO task (titulo, descripcion, prioridad, finalizada) VALUES (?, ?, ?, ?)");
-        $query->execute([$title, $description, $priority, false]);
+        $query = $db->prepare("INSERT INTO task (titulo, descripcion, prioridad, finalizada, imagen) VALUES (?, ?, ?, ?, ?)");
+        $query->execute([$title, $description, $priority, false, $pathImg]);
 
         return $db->lastInsertId();
     }
 
+    private function uploadImage($image){
+        $target = 'img/task/' . uniqid() . '.jpg'; // verifica que el nombre sea unico
+        move_uploaded_file($image, $target);
+        return $target;
+    }
+
+
     /**
      * Elimina una tarea dado su id.
      */
-    function deleteTaskById($id) {
-        $db = getDB();
+    function deleteById($id) {
+        $db =  $this->getDB();
         $query = $db->prepare('DELETE FROM task WHERE id = ?');
         $query->execute([$id]);
     }
+
 }

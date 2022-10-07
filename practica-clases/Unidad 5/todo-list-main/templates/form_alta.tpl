@@ -1,5 +1,5 @@
 <!-- formulario de alta de tarea -->
-<form action="add" method="POST" class="my-4">
+<form action="add" method="POST" class="my-4" enctype="multipart/form-data">
     <div class="row">
         <div class="col-9">
             <div class="form-group">
@@ -25,6 +25,8 @@
     <div class="form-group">
         <label>Descripcion</label>
         <textarea name="description" class="form-control" rows="3"></textarea>
+
+        <input type="file" name="input_name" id="imageToUpload">
     </div>
 
     <button type="submit" class="btn btn-primary mt-2">Guardar</button>

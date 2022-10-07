@@ -10,7 +10,6 @@ class TaskView{
     }
 
     function showTask($tasks){
-        
         $this->smarty->assign('tasks', $tasks);
         $this->smarty->display('templates/taskList.tpl');
     }

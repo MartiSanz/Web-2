@@ -31,7 +31,12 @@ class TaskController{
         $description = $_POST['description'];
         $priority = $_POST['priority'];
     
-        $id = $this->model->insert($title, $description, $priority);
+        if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png"){
+            $id = $this->model->insertTask($title, $description, $priority, $_FILES['input_name']['tmp_name']);
+        }
+        else {
+            $id = $this->model->insertTask($title, $description, $priority);
+        }
     
         header("Location: " . BASE_URL); 
     }
