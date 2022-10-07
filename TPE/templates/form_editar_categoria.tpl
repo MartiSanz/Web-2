@@ -5,7 +5,7 @@
         <div class="col-9">
             <div class="card">
                 <div class='card-header'>
-                    <span> <b>Editando Categoria -> {$nombreViejoCategoria->nombre}</b></span>
+                    <span> <b>Editar Categoria -> {$nombreViejoCategoria}</b></span>
                 </div>
                 <input placeholder="Nombre categoria" name="nombre" type="text" class="form-control">
             </div>

@@ -39,9 +39,9 @@ class CategoriaController{
 
     function verFormEditarCategoria($id_categoria) {   
         //actualiza la vista
-        $nombreCategoria = $this->model->getNombreCategoriaById($id_categoria);
+        $categoria = $this->model->getCategoriaById($id_categoria);
 
-        $this->view->verFormEditarCategoria($id_categoria, $nombreCategoria[0]);
+        $this->view->verFormEditarCategoria($categoria);
     }
 
     // inserta una categoria
@@ -67,7 +67,7 @@ class CategoriaController{
         // validar entrada de datos
         $nombreCategoria = $_POST['nombre'];
     
-        $id = $this->model->editarCategoriaById($id, $nombreCategoria);
+        $id = $this->model->editarCategoria($id, $nombreCategoria);
 
         header('Location: ' .BASE_URL. 'verCategorias');
     }

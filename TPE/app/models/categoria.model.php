@@ -28,16 +28,16 @@ class CategoriaModel{
     }
 
     /**
-     * Devuelve el nombre de una categoria dado un id
+     * Devuelve el una categoria dado un id
      */
-    function getNombreCategoriaById($id_categoria){
-        $query = $this->db->prepare('SELECT nombre FROM categoria WHERE id = ?');
+    function getCategoriaById($id_categoria){
+        $query = $this->db->prepare('SELECT * FROM categoria WHERE id = ?');
         $query->execute([$id_categoria]);
 
         // obtengo los resultados
         $categoria = $query->fetchAll(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
         
-        return $categoria;
+        return $categoria[0];
     }
 
     /**
@@ -62,7 +62,7 @@ class CategoriaModel{
     /**
      * edita una categoria en la base de datos.
     */
-    function editarCategoriaById($id, $nombreCategoria){
+    function editarCategoria($id, $nombreCategoria){
         // validar entrada de datos
         $query = $this->db->prepare("UPDATE categoria SET nombre = ? WHERE id = ?");
         $query->execute([$nombreCategoria, $id]);

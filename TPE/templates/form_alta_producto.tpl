@@ -11,10 +11,10 @@
                 <input placeholder="Nombre producto" name="nombre" type="text" class="form-control" required>
                 <input placeholder="Nombre marca" name="marca" type="text" class="form-control" required>
                 <input placeholder="Precio producto" name="precio" type="number" class="form-control" required>
-                <select class="form-select">
-                {foreach from=$listadoCategorias item=$item} <!-- required}-->
-                    <option name="idCategoria" value="{$item->id}">{$item->nombre}</option>
-                {/foreach} 
+                <select name="idCategoria" class="form-control">
+                    {foreach from=$listadoCategorias item=$item}
+                        <option value="{$item->id}">{$item->nombre}</option>
+                    {/foreach} 
                 </select>
                 </div>
         </div>

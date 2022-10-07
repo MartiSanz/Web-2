@@ -11,17 +11,21 @@
             <tbody>
             {foreach from=$listado item=$item}
                 <tr>
-                    <td><a class="btn bi bi-pencil-square" href='{$href}{$item->id}'> <b>{$item->nombre}</b></a></td>
-                    <th><a class="btn btn-outline-success" href="{$hrefBotonEditar}{$item->id}">{$botonEditar}</a></th>
-                    <th><a class="btn btn btn-danger" href='{$hrefBotonEliminar}{$item->id}'>{$botonEliminar}</a></th>
+                    <td><a class="btn bi bi-pencil-square" href='{$href}{$item->id}/{$esHome}'> <b>{$item->nombre}</b></a></td>
+                    {if $esHome}
+                        <th><a class="btn btn-outline-success" href="{$hrefBotonEditar}{$item->id}">{$botonEditar}</a></th>
+                        <th><a class="btn btn btn-danger" href='{$hrefBotonEliminar}{$item->id}'>{$botonEliminar}</a></th>
+                    {/if}
                 </tr>
             {/foreach}  
             </tbody>
         </table>
-
-        <div class='card-footer'>
-            <span> <a class='btn btn-outline-secondary' href='{$hrefBotonAgregar}'> {$botonAgregar} </a> </span>
-        </div>
+        
+        {if $esHome}
+            <div class='card-footer'>
+                <span> <a class='btn btn-outline-secondary' href='{$hrefBotonAgregar}'> {$botonAgregar} </a> </span>
+            </div>
+        {/if}
     </div>
 </div>
 {include 'templates/footer.tpl'}

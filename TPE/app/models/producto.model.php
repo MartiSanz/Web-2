@@ -29,8 +29,6 @@ class ProductoModel{
 
     function getProductoById($id) {
 
-        //CONSULTAR
-        // Esta bien llamar dos tablas desde el model de producto? Aca se debe mostrar la categoria?
         $query = $this->db->prepare('SELECT p.id, p.nombre as productoNombre, p.marca, p.precio, c.nombre as categoriaNombre FROM producto p JOIN categoria c on c.id = p.id_categoria_fk WHERE p.id = ?');
         $query->execute([$id]);
 
@@ -62,7 +60,7 @@ class ProductoModel{
     }
 
     /**
-     * elimina un prodcuto en la base de datos.
+     * elimina un producto en la base de datos.
     */
     function eliminarProductoById($id){
         // validar entrada de datos
@@ -70,5 +68,13 @@ class ProductoModel{
         $query->execute([$id]);
     }
 
-    //falta editar
+    /**
+     * edita un producto en la base de datos.
+    */
+    function editarProducto($id_producto, $nombreProducto, $nombreMarca, $precio, $idCategoria){
+        
+        $query = $this->db->prepare("UPDATE producto SET nombre = ?, marca = ?, precio = ?, id_categoria_fk = ? WHERE id = ?");
+        $query->execute([$nombreProducto, $nombreMarca, $precio, $idCategoria, $id_producto]);
+        
+    }
 }

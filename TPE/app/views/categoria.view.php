@@ -22,6 +22,9 @@ class CategoriaView{
         $this->smarty->assign('hrefBotonEditar', 'verFormEditarCategoria/');
         $this->smarty->assign('hrefBotonEliminar', 'eliminarCategoria/');
 
+        //es home de listado?
+        $this->smarty->assign('esHome', 1);
+
         $this->smarty->display('templates/verListado.tpl');   
     }
 
@@ -29,9 +32,9 @@ class CategoriaView{
         $this->smarty->display('templates/form_alta_categoria.tpl');   
     }
     
-    function verFormEditarCategoria($id_categoria, $nombreCategoria){
-        $this->smarty->assign('idCategoria', $id_categoria);
-        $this->smarty->assign('nombreViejoCategoria', $nombreCategoria);
+    function verFormEditarCategoria($categoria){
+        $this->smarty->assign('idCategoria', $categoria->id);
+        $this->smarty->assign('nombreViejoCategoria', $categoria->nombre);
         $this->smarty->display('templates/form_editar_categoria.tpl');   
     }
 }

@@ -18,11 +18,13 @@ $controllerCategoria = new CategoriaController();
 // tabla de ruteo
 switch ($params[0]) {
     case 'home':
-        $controllerProducto->verProductos();
+        $esHome = 1; // si es home muestro los botones de editar, eliminar y agregar producto
+        $controllerProducto->verProductos($esHome);
         break;
     case 'verProducto':
         $id_producto = $params[1];
-        $controllerProducto->verProducto($id_producto);
+        $esHome = $params[2];
+        $controllerProducto->verProducto($id_producto, $esHome);
         break;
     case 'verCategorias':
         $controllerCategoria->verCategorias();
@@ -42,8 +44,18 @@ switch ($params[0]) {
         $categorias = $controllerCategoria->getCategorias();
         $controllerProducto->verFormAgregarProducto($categorias);
         break;
+    case 'verFormEditarProducto':
+        $id_producto = $params[1];
+        $categorias = $controllerCategoria->getCategorias();
+        $controllerProducto->verFormEditarProducto($categorias, $id_producto);
+        break;
     case 'agregarProducto':
         $controllerProducto->agregarProducto();
+        break;
+    case 'editarProducto':
+        print_r ($params[1]);
+        $id_producto = $params[1];
+        $controllerProducto->editarProducto($id_producto);
         break;
     case 'eliminarProducto':
         $id_producto = $params[1];
