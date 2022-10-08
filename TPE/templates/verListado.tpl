@@ -13,7 +13,7 @@
                 <tr>
                     <td><a class="btn bi bi-pencil-square" href='{$href}{$item->id}/{$esHome}'> <b>{$item->nombre}</b></a></td>
                     {if isset($item->imagen)}
-                        <th><a href='{$href}{$item->id}/{$esHome}'> <img class="img-fluid" src="{$item->imagen}"/></a></th>
+                        <th class="col-sm-2"><a href='{$href}{$item->id}/{$esHome}'> <img class="img-fluid" src="{$item->imagen}"/></a></th>
                     {else}
                         <th></th>
                     {/if}  

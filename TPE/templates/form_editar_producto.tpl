@@ -4,10 +4,10 @@
 
 <div class='card'>
     <div class='card-header'>
-        <span class="fs-4 text"> <b>Editar Producto: {$producto->productoNombre}</b></span>
+        <span class="fs-4 text"> <b>Editar Producto:</b> {$producto->productoNombre}</span>
     </div>
     <div class='card-body'>
-        <table class='table'>
+        <table class='table text-center'>
             <thead>
                 <tr>
                     <th scope='col'>{$tituloCol1}</th>
@@ -15,12 +15,12 @@
                     <th scope='col'>{$tituloCol3}</th>
                     <th scope='col'>{$tituloCol4}</th>
                     {if isset($producto->imagen)}
-                        <th scope='col'>{$tituloCol5}</th>
+                        <th class="col-sm-2" scope='col'>{$tituloCol5}</th>
                     {/if}
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr class="col-sm-2">
                     <td>{$producto->productoNombre}</td>
                     <td>{$producto->marca}</td>
                     <td>${$producto->precio}</td>
