@@ -21,12 +21,15 @@ class CategoriaController{
         $this->authHelper = new AuthHelper();
         $seLogueo = 0;
         $seLogueo = $this->authHelper->checkLoggedIn(); 
+      
+        // puedo mostrar los botones de eliminar, editar y agregar categoria? si, es home
+        $esHome = 1; 
         
         //obtiene los categorias del modelo
         $categorias = $this->model->getAll();
 
         //actualiza la vista
-        $this->view->verCategorias($categorias, $seLogueo);
+        $this->view->verCategorias($categorias, $esHome, $seLogueo);
     }
 
     //retorna la lista de categorias
