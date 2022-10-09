@@ -2,6 +2,7 @@
 
 include_once './app/models/task.model.php';
 include_once './app/views/task.view.php';
+require_once './app/helpers/auth.helper.php';
 
 class TaskController{
     private $model;
@@ -10,6 +11,15 @@ class TaskController{
     public function __construct(){
         $this->view = new TaskView();
         $this->model = new TaskModel();
+
+        // BARRRERA DE SEGURIDAD
+        // Haciendolo de esta manera no le permito al usuario usar nada de
+        // la aplicacion
+        // Si quisiera solo permitirle NO USAR algunas funciones, debo sacarlo del constructor
+        // y agregar la barrera de seguridad en las funciones en que solo va a tener permiso si esta logueado
+        $authHelper = new AuthHelper();
+        $authHelper->checkLoggedIn(); // verifica que el usuario este logueado
+
     }
 
     //imprime la lista de tareas

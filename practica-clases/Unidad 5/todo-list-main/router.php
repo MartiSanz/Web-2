@@ -1,6 +1,7 @@
 <?php
 
 require_once './app/controllers/task.controller.php';
+require_once './app/controllers/auth.controller.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -29,6 +30,25 @@ switch ($params[0]) {
         $id = $params[1];
         $controller->deleteTask($id);
         break;
+
+    case 'login':
+        $authController = new AuthController();
+        $authController->showFormLogin();
+        break;
+    case 'validate':
+        $authController = new AuthController();
+        $authController->validateUser();
+        break;
+    case 'logout':
+        $authController = new AuthController();
+        $authController->logout();
+        break;
+    case "finalize":  // finalize/:ID
+        $taskController = new TaskController();
+        $id = $params[1];
+        $taskController->finalizeTask($id);
+        break;
+
     default:
         header("HTTP/1.0 404 Not Found");
         echo('404 Page not found'); // esto pertenece a la vista 
