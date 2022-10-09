@@ -2,6 +2,7 @@
 
 include_once './app/models/producto.model.php';
 include_once './app/views/producto.view.php';
+require_once './app/helpers/auth.helper.php';
 
 class ProductoController{
     private $model;
@@ -10,6 +11,10 @@ class ProductoController{
     public function __construct(){
         $this->view = new ProductoView();
         $this->model = new ProductoModel();
+
+        // BARRRERA DE SEGURIDAD
+        $authHelper = new AuthHelper();
+        $authHelper->checkLoggedIn(); // verifica que el usuario este logueado
     }
 
     //imprime la lista de productos

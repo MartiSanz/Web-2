@@ -2,6 +2,7 @@
 
 include_once './app/models/categoria.model.php';
 include_once './app/views/categoria.view.php';
+require_once './app/helpers/auth.helper.php';
 
 class CategoriaController{
     private $model;
@@ -10,6 +11,10 @@ class CategoriaController{
     public function __construct(){
         $this->view = new CategoriaView();
         $this->model = new CategoriaModel();
+
+        // BARRRERA DE SEGURIDAD
+        $authHelper = new AuthHelper();
+        $authHelper->checkLoggedIn(); // verifica que el usuario este logueado
     }
 
     //imprime la lista de categorias

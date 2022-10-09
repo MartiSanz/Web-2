@@ -19,10 +19,19 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
               <li class="nav-item">
                 <a class="nav-link" href="verCategorias">Categorias</a>
               </li>
+              {if !isset($smarty.session.USER_ID)}
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="ingresar">Ingresar</a>
+                </li>
+              {else} 
+                <li class="nav-item ml-auto">
+                  <a class="nav-link" aria-current="page" href="salir">Salir ({$smarty.session.USER_EMAIL})</a>
+                </li>
+              {/if}
           </div>
         </div>
       </nav>
