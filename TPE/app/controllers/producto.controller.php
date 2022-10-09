@@ -7,14 +7,20 @@ require_once './app/helpers/auth.helper.php';
 class ProductoController{
     private $model;
     private $view;
+    private $authHelper;
+    private $seLogueo;
 
     public function __construct(){
         $this->view = new ProductoView();
         $this->model = new ProductoModel();
 
         // BARRRERA DE SEGURIDAD
-        $authHelper = new AuthHelper();
-        $authHelper->checkLoggedIn(); // verifica que el usuario este logueado
+        $this->authHelper = new AuthHelper();
+        $this->seLogueo = false;
+        // verifica que el usuario este logueado
+        $this->seLogueo = $this->authHelper->checkLoggedIn(); 
+
+        //$authHelper->checkLoggedIn(); // verifica que el usuario este logueado
     }
 
     //imprime la lista de productos
@@ -22,8 +28,11 @@ class ProductoController{
         
         //obtiene los productos del modelo
         $productos = $this->model->getAll();
+
+        //asigno titulo
+        $titulo = 'LISTADO DE PRODUCTOS';
         //actualiza la vista
-        $this->view->verProductos($productos, $esHome);
+        $this->view->verProductos($productos, $esHome, $this->seLogueo, $titulo);
     }
 
     //muestra la descr y precio del producto
@@ -34,12 +43,13 @@ class ProductoController{
         $this->view->verProducto($producto, $esHome);
     }
 
-    function verProductosPorCategoria($idCategoria) {   
+    function verProductosPorCategoria($categoria) {   
 
-        $productos = $this->model->getProductoByCategoriaId($idCategoria);
+        $productos = $this->model->getProductoByCategoriaId($categoria->id);
         $esHome = 0;
+        $titulo = 'LISTADO DE PRODUCTOS POR CATEGORIA: ' .$categoria->nombre;
         //actualiza la vista
-        $this->view->verProductos($productos, $esHome);
+        $this->view->verProductos($productos, $esHome, $this->seLogueo, $titulo);
     }
 
     // inserta un producto

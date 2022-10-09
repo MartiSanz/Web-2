@@ -7,7 +7,7 @@ class CategoriaView{
         $this->smarty = new Smarty();
     }
 
-    function verCategorias($categorias){
+    function verCategorias($categorias, $seLogueo){
         //titulos 
         $this->smarty->assign('titulo', 'LISTADO DE CATEGORIAS');
         $this->smarty->assign('botonAgregar', 'Agregar categoria');
@@ -16,14 +16,18 @@ class CategoriaView{
 
         //listado de categorias
         $this->smarty->assign('listado', $categorias);
+        
         //href
         $this->smarty->assign('href', 'verProductosPorCategoria/');
         $this->smarty->assign('hrefBotonAgregar', 'verFormAgregarCategoria');
         $this->smarty->assign('hrefBotonEditar', 'verFormEditarCategoria/');
         $this->smarty->assign('hrefBotonEliminar', 'eliminarCategoria/');
 
-        //es home de listado?
-        $this->smarty->assign('esHome', 1);
+        //es listado de home? no
+        $this->smarty->assign('esHome', 1); // tendria que pasar el parameto como hice con loproducto
+
+        //esta logueado?
+        $this->smarty->assign('seLogueo', $seLogueo);
 
         $this->smarty->display('templates/verListado.tpl');   
     }

@@ -9,9 +9,9 @@ class ProductoView{
         $this->smarty = new Smarty();
     }
     
-    function verProductos($productos, $esHome){
+    function verProductos($productos, $esHome, $seLogueo, $titulo){
         //titulos
-        $this->smarty->assign('titulo', 'LISTADO DE PRODUCTOS');
+        $this->smarty->assign('titulo', $titulo);
         $this->smarty->assign('botonAgregar', 'Agregar producto');
         $this->smarty->assign('botonEditar', 'Editar producto');
         $this->smarty->assign('botonEliminar', 'Eliminar producto');
@@ -24,9 +24,18 @@ class ProductoView{
         $this->smarty->assign('hrefBotonAgregar', 'verFormAgregarProducto');
         $this->smarty->assign('hrefBotonEditar', 'verFormEditarProducto/');
         $this->smarty->assign('hrefBotonEliminar', 'eliminarProducto/');
+        if($esHome){
+            $this->smarty->assign('hrefVolver', '#');
+        }
+        else{
+            $this->smarty->assign('hrefVolver', 'verCategorias');
+        }
 
-        //es home de listado?
+        //es listado de home?
         $this->smarty->assign('esHome', $esHome);
+
+        //esta logueado?
+        $this->smarty->assign('seLogueo', $seLogueo);
         
         $this->smarty->display('templates/verListado.tpl');   
     }
@@ -45,7 +54,14 @@ class ProductoView{
         $this->smarty->assign('producto', $producto);
 
         //href
-        $this->smarty->assign('href', './home');
+        if($esHome){
+            $this->smarty->assign('hrefVolver', './home');
+        }
+        else{
+            $this->smarty->assign('hrefVolver', 'verProductosPorCategoria/' .$producto->id_categoria_fk);
+        }
+
+
 
         //es home de listado?
         $this->smarty->assign('esHome', $esHome);

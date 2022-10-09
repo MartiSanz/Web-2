@@ -7,24 +7,30 @@ require_once './app/helpers/auth.helper.php';
 class CategoriaController{
     private $model;
     private $view;
+    private $authHelper;
 
     public function __construct(){
         $this->view = new CategoriaView();
         $this->model = new CategoriaModel();
 
         // BARRRERA DE SEGURIDAD
-        $authHelper = new AuthHelper();
-        $authHelper->checkLoggedIn(); // verifica que el usuario este logueado
+//        $this->authHelper = new AuthHelper();
+   //     $authHelper->checkLoggedIn(); // verifica que el usuario este logueado
     }
 
     //imprime la lista de categorias
-    function verCategorias() {    
+    function verCategorias() {  
+
+        // verifica que el usuario este logueado  
+        $this->authHelper = new AuthHelper();
+        $seLogueo = 0;
+        $seLogueo = $this->authHelper->checkLoggedIn(); 
         
         //obtiene los categorias del modelo
         $categorias = $this->model->getAll();
 
         //actualiza la vista
-        $this->view->verCategorias($categorias);
+        $this->view->verCategorias($categorias, $seLogueo);
     }
 
     //retorna la lista de categorias
@@ -40,6 +46,10 @@ class CategoriaController{
     function verFormAgregarCategoria() {   
         //actualiza la vista
         $this->view->verFormAgregarCategoria();
+    }
+
+    function getCategoriaById($id_categoria){
+        return $this->model->getCategoriaById($id_categoria);
     }
 
     function verFormEditarCategoria($id_categoria) {   

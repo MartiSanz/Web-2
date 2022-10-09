@@ -17,7 +17,7 @@
                     {else}
                         <th></th>
                     {/if}  
-                    {if $esHome}
+                    {if $esHome && $seLogueo}
                         <th><a class="btn btn-outline-success" href="{$hrefBotonEditar}{$item->id}">{$botonEditar}</a></th>
                         <th><a class="btn btn btn-danger" href='{$hrefBotonEliminar}{$item->id}'>{$botonEliminar}</a></th>
                     {/if}              
@@ -27,8 +27,14 @@
         </table>
         
         {if $esHome}
+            {if $seLogueo}
+                <div class='card-footer'>
+                    <span> <a class='btn btn-outline-secondary' href='{$hrefBotonAgregar}'> {$botonAgregar} </a> </span>
+                </div>
+            {/if}
+        {else}
             <div class='card-footer'>
-                <span> <a class='btn btn-outline-secondary' href='{$hrefBotonAgregar}'> {$botonAgregar} </a> </span>
+                <span> <a class='btn btn-outline-secondary' href='{$hrefVolver}'> Volver </a> </span>
             </div>
         {/if}
     </div>

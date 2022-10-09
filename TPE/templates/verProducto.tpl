@@ -29,11 +29,11 @@
         </table>
     </div>
 
-    {if $esHome}
+
         <div class='card-footer'>
-            <span> <a class='btn btn-outline-secondary' href='{$href}'> Volver </a> </span>
+            <span> <a class='btn btn-outline-secondary' href='{$hrefVolver}'> Volver </a> </span>
         </div>
-    {/if}
+
 </div>
 
 {include 'templates/footer.tpl'}

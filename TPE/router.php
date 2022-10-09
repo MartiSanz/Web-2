@@ -35,8 +35,10 @@ switch ($params[0]) {
         break;
     case 'verProductosPorCategoria':
         $controllerProducto = new ProductoController();
-        $id_categoria = $params[1];
-        $controllerProducto->verProductosPorCategoria($id_categoria);
+        $controllerCategoria = new CategoriaController();
+        
+        $categoria = $controllerCategoria->getCategoriaById($params[1]);
+        $controllerProducto->verProductosPorCategoria($categoria);
         break;
     case 'verFormAgregarCategoria':
         $controllerCategoria = new CategoriaController();

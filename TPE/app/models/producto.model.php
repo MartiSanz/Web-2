@@ -29,7 +29,7 @@ class ProductoModel{
 
     function getProductoById($id) {
 
-        $query = $this->db->prepare('SELECT p.id, p.nombre as productoNombre, p.marca, p.precio, p.imagen, c.nombre as categoriaNombre FROM producto p JOIN categoria c on c.id = p.id_categoria_fk WHERE p.id = ?');
+        $query = $this->db->prepare('SELECT p.id, p.nombre as productoNombre, p.marca, p.precio, p.id_categoria_fk, p.imagen, c.nombre as categoriaNombre FROM producto p JOIN categoria c on c.id = p.id_categoria_fk WHERE p.id = ?');
         $query->execute([$id]);
 
         // obtengo los resultados
