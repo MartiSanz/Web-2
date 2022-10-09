@@ -12,15 +12,11 @@ class CategoriaController{
     public function __construct(){
         $this->view = new CategoriaView();
         $this->model = new CategoriaModel();
-
-        // BARRRERA DE SEGURIDAD
-//        $this->authHelper = new AuthHelper();
-   //     $authHelper->checkLoggedIn(); // verifica que el usuario este logueado
     }
 
     //imprime la lista de categorias
     function verCategorias() {  
-
+        // BARRRERA DE SEGURIDAD
         // verifica que el usuario este logueado  
         $this->authHelper = new AuthHelper();
         $seLogueo = 0;

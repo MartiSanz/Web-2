@@ -24,7 +24,7 @@ class CategoriaView{
         $this->smarty->assign('hrefBotonEliminar', 'eliminarCategoria/');
 
         //es listado de home? no
-        $this->smarty->assign('esHome', 1); // tendria que pasar el parameto como hice con loproducto
+        $this->smarty->assign('esHome', 1); // MODIFICAR tendria que pasar el parameto como hice con loproducto
 
         //esta logueado?
         $this->smarty->assign('seLogueo', $seLogueo);

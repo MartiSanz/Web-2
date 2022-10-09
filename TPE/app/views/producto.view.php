@@ -49,6 +49,7 @@ class ProductoView{
         $this->smarty->assign('tituloCol2', 'Marca');
         $this->smarty->assign('tituloCol3', 'Precio');
         $this->smarty->assign('tituloCol4', 'Categoria');
+        $this->smarty->assign('tituloCol5', 'Imagen');
 
         //Listado
         $this->smarty->assign('producto', $producto);
@@ -60,8 +61,6 @@ class ProductoView{
         else{
             $this->smarty->assign('hrefVolver', 'verProductosPorCategoria/' .$producto->id_categoria_fk);
         }
-
-
 
         //es home de listado?
         $this->smarty->assign('esHome', $esHome);

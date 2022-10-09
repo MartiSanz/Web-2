@@ -26,7 +26,7 @@
                     <td>${$producto->precio}</td>
                     <td>{$producto->categoriaNombre}</td>
                     {if isset($producto->imagen)}
-                        <td><img src="{$producto->imagen}"/></td>
+                        <td><img class="img-fluid" src="{$producto->imagen}"/></td>
                     {/if}
                 
                 </tr>

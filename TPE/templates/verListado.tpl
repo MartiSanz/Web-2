@@ -4,8 +4,6 @@
     <div class='card-header'>
         <span class="fs-4 text"> <b>{$titulo} </b> </span>
     </div>
-
-
     <div class='card-body'>
         <table class='table text-center'>
             <tbody>
