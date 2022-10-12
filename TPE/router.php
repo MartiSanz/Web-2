@@ -12,15 +12,12 @@ if (!empty($_GET['action'])) {
 }
 
 $params = explode('/', $action);
-//$controllerProducto = new ProductoController();
-//$controllerCategoria = new CategoriaController();
-//print_r($params[0]);
 
 // tabla de ruteo
 switch ($params[0]) {
     case 'home':
         $controllerProducto = new ProductoController();
-        $esHome = 1; // si es home muestro los botones de editar, eliminar y agregar producto
+        $esHome = 1; // si es home muestro el boton agregar producto
         $controllerProducto->verProductos($esHome);
         break;
     case 'verProducto':
@@ -30,8 +27,9 @@ switch ($params[0]) {
         $controllerProducto->verProducto($id_producto, $esHome);
         break;
     case 'verCategorias':
+        $esHome = 1;
         $controllerCategoria = new CategoriaController();
-        $controllerCategoria->verCategorias();
+        $controllerCategoria->verCategorias($esHome);
         break;
     case 'verProductosPorCategoria':
         $controllerProducto = new ProductoController();
@@ -69,12 +67,14 @@ switch ($params[0]) {
     case 'editarProducto':
         $controllerProducto = new ProductoController();
         $id_producto = $params[1];
-        $controllerProducto->editarProducto($id_producto);
+        $esHome = $params[2];
+        $controllerProducto->editarProducto($id_producto, $esHome);
         break;
     case 'eliminarProducto':
         $controllerProducto = new ProductoController();
         $id_producto = $params[1];
-        $controllerProducto->eliminarProducto($id_producto);
+        $esHome = $params[2];
+        $controllerProducto->eliminarProducto($id_producto, $esHome);
         break;
     case 'agregarCategoria':
         $controllerCategoria = new CategoriaController();

@@ -15,9 +15,9 @@
                     {else}
                         <th></th>
                     {/if}  
-                    {if $esHome && $seLogueo}
-                        <th><a class="btn btn-outline-success" href="{$hrefBotonEditar}{$item->id}">{$botonEditar}</a></th>
-                        <th><a class="btn btn btn-danger" href='{$hrefBotonEliminar}{$item->id}'>{$botonEliminar}</a></th>
+                    {if $seLogueo}
+                        <th><a class="btn btn-outline-success" href="{$hrefBotonEditar}{$item->id}/{$esHome}">{$botonEditar}</a></th>
+                        <th><a class="btn btn btn-danger" href='{$hrefBotonEliminar}{$item->id}/{$esHome}'>{$botonEliminar}</a></th>
                     {/if}              
                 </tr>
             {/foreach}  

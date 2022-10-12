@@ -35,7 +35,7 @@ class ProductoController{
         $this->view->verProductos($productos, $esHome, $this->seLogueo, $titulo);
     }
 
-    //muestra la descr y precio del producto
+    //muestra el producto
     function verProducto($id, $esHome) {   
         $producto = $this->model->getProductoById($id);
 
@@ -71,7 +71,7 @@ class ProductoController{
     }
 
     // edita un producto
-    function editarProducto($id_producto){
+    function editarProducto($id_producto, $esHome){
         // validar entrada de datos
         $nombreProducto = $_POST['nombre'];
         $nombreMarca = $_POST['marca'];
@@ -86,7 +86,29 @@ class ProductoController{
 
         }
         
-        header('Location: ' .BASE_URL. 'home');
+        if($esHome){
+            header('Location: ' .BASE_URL. 'home');
+        }
+        else{
+            print_r($producto);
+            header('Location: ' .BASE_URL. 'verProductosPorCategoria/' .$idCategoria);
+        }   
+    }
+
+    // elimina un producto
+    function eliminarProducto($id, $esHome){
+        // validar entrada de datos
+        $producto = $this->model->getProductoById($id);
+        $this->model->eliminarProductoById($id);
+
+        if($esHome){
+            header('Location: ' .BASE_URL. 'home');
+        }
+        else{
+            print_r($producto);
+            header('Location: ' .BASE_URL. 'verProductosPorCategoria/' .$producto->id_categoria_fk);
+        }   
+
     }
 
     function verFormAgregarProducto($listadoCategorias) {   
@@ -99,13 +121,5 @@ class ProductoController{
         $producto = $this->model->getProductoById($id_producto);
 
         $this->view->verFormEditarProducto($listadoCategorias, $producto);
-    }
-
-    // elimina un producto
-    function eliminarProducto($id){
-        // validar entrada de datos
-        $this->model->eliminarProductoById($id);
-
-        header('Location: ' .BASE_URL. 'home');
     }
 }

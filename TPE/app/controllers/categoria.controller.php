@@ -15,15 +15,11 @@ class CategoriaController{
     }
 
     //imprime la lista de categorias
-    function verCategorias() {  
-        // BARRRERA DE SEGURIDAD
-        // verifica que el usuario este logueado  
+    function verCategorias($esHome) {  
+        // BARRRERA DE SEGURIDAD - verifica que el usuario este logueado  
         $this->authHelper = new AuthHelper();
         $seLogueo = 0;
         $seLogueo = $this->authHelper->checkLoggedIn(); 
-      
-        // puedo mostrar los botones de eliminar, editar y agregar categoria? si, es home
-        $esHome = 1; 
         
         //obtiene los categorias del modelo
         $categorias = $this->model->getAll();
