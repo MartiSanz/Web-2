@@ -18,10 +18,10 @@ class CategoriaView{
         $this->smarty->assign('listado', $categorias);
         
         //href
-        $this->smarty->assign('href', 'verProductosPorCategoria/');
-        $this->smarty->assign('hrefBotonAgregar', 'verFormAgregarCategoria');
-        $this->smarty->assign('hrefBotonEditar', 'verFormEditarCategoria/');
-        $this->smarty->assign('hrefBotonEliminar', 'eliminarCategoria/');
+        $this->smarty->assign('href', BASE_URL.'verProductosPorCategoria/');
+        $this->smarty->assign('hrefBotonAgregar', BASE_URL.'verFormAgregarCategoria');
+        $this->smarty->assign('hrefBotonEditar', BASE_URL.'verFormEditarCategoria/');
+        $this->smarty->assign('hrefBotonEliminar', BASE_URL.'eliminarCategoria/');
 
         //es listado de home, es decir, listado de categorias? si
         $this->smarty->assign('esHome', $esHome); // MODIFICAR tendria que pasar el parameto como hice con loproducto
