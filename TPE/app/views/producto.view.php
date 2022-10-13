@@ -20,15 +20,15 @@ class ProductoView{
         $this->smarty->assign('listado', $productos);
 
         //href
-        $this->smarty->assign('href', BASE_URL.'verProducto/');
-        $this->smarty->assign('hrefBotonAgregar', BASE_URL.'verFormAgregarProducto');
-        $this->smarty->assign('hrefBotonEditar', BASE_URL.'verFormEditarProducto/');
-        $this->smarty->assign('hrefBotonEliminar', BASE_URL.'eliminarProducto/');
+        $this->smarty->assign('href', 'verProducto/');
+        $this->smarty->assign('hrefBotonAgregar', 'verFormAgregarProducto');
+        $this->smarty->assign('hrefBotonEditar', 'verFormEditarProducto/');
+        $this->smarty->assign('hrefBotonEliminar', 'eliminarProducto/');
         if($esHome){
-            $this->smarty->assign('hrefVolver', BASE_URL);
+            $this->smarty->assign('hrefVolver', '#');
         }
         else{
-            $this->smarty->assign('hrefVolver', BASE_URL.'verCategorias');
+            $this->smarty->assign('hrefVolver', 'verCategorias');
         }
 
         //es listado de home?
@@ -56,10 +56,10 @@ class ProductoView{
 
         //href
         if($esHome){
-            $this->smarty->assign('hrefVolver', BASE_URL);
+            $this->smarty->assign('hrefVolver', './home');
         }
         else{
-            $this->smarty->assign('hrefVolver', BASE_URL. 'verProductosPorCategoria/' .$producto->id_categoria_fk);
+            $this->smarty->assign('hrefVolver', 'verProductosPorCategoria/' .$producto->id_categoria_fk);
         }
 
         //es home de listado?
